@@ -4,6 +4,13 @@ class Demanda_x_dia(object):
     def __init__(self, intervalos, probabilidades):
         self.intervalos = intervalos
         self.probabilidades = probabilidades
+        self.acumulador=[]
+
+    def set_acumulador(self):
+        aux=[0]*len(self.probabilidades)
+        for i in range(len(self.probabilidades)):
+            aux[i]=sum(aux)+self.probabilidades[i]
+        self.acumulador=aux
 
 class Demoras(object):
     def __init__(self,dias, probabilidades):
@@ -15,7 +22,7 @@ class Demoras(object):
         aux=[0]*len(self.probabilidades)
         for i in range(len(self.probabilidades)):
             aux[i]=sum(aux)+self.probabilidades[i]
-        return aux
+        self.acumulador=aux
 
 
 class Costos(object):
@@ -40,5 +47,9 @@ class Resolucion(object):
         self.costo_total = costo_total
         self.acumulador_costo = acumulador_costo
         self.promedio_costo = promedio_costo
+
+    def __list__(self):
+        return [self.dia, self.rnd_demanda, self.demanda, self.pedido, self.rnd_demora, self.demora, self.stock,self.decenas_pedidas, self.costo_orden, self.costo_almacenamiento, self.costo_ruptura, self.costo_total, self.acumulador_costo, self.promedio_costo]
+
         
     
