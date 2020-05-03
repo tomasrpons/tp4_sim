@@ -31,6 +31,7 @@ def main():
             costo_almacen=[]
             costo_ruptura=[]
             costo_acumulado=[]
+            costo_total = []
             promedio_costo=[]
 
             for i in range(len(resoluciones)):
@@ -45,13 +46,14 @@ def main():
                 costo_orden.append(resoluciones[i].costo_orden)
                 costo_almacen.append(resoluciones[i].costo_almacenamiento)
                 costo_ruptura.append(resoluciones[i].costo_ruptura)
+                costo_total.append(resoluciones[i].costo_total)
                 costo_acumulado.append(resoluciones[i].acumulador_costo)
                 promedio_costo.append(resoluciones[i].promedio_costo)
 
             res={'DIAS':dias,'RND DEMANDA': rnd_demanda,'DEMANDA':demanda,'PEDIDO':pedido,'RND DEMORA':rnd_demora, 'DEMORA':demoras,'STOCK':stock,'DECENAS PEDIDAS':decenas_pedidas,
-            'COSTO ORDEN': costo_orden, 'COSTO ALMACEN.': costo_almacen, 'COSTO RUPTURA': costo_ruptura, 'COSTO ACUM':costo_acumulado,'PROMEDIO':promedio_costo}
+            'COSTO ORDEN': costo_orden, 'COSTO ALMACEN.': costo_almacen, 'COSTO RUPTURA': costo_ruptura, 'COSTO ACUM':costo_acumulado,'COSTO TOTAL':costo_total,'PROMEDIO':promedio_costo}
             
-            var= tabulate.tabulate(res, headers=['DIA','RND DEMANDA', 'DEMANDA', 'PEDIDO', 'RND DEMORA', 'DEMORA', 'STOCK', 'DECENAS PEDIDAS', 'COSTO ORDEN', 'COSTO ALMACEN.', 'COSTO RUPTURA', 'COSTO ACUM.', 'PROMEDIO COSTO'], tablefmt='fancy_grid')
+            var= tabulate.tabulate(res, headers=['DIA','RND DEMANDA', 'DEMANDA', 'PEDIDO', 'RND DEMORA', 'DEMORA', 'STOCK', 'DECENAS PEDIDAS', 'COSTO ORDEN', 'COSTO ALMACEN.', 'COSTO RUPTURA','COSTO TOTAL' ,'COSTO ACUM.','PROMEDIO COSTO'], tablefmt='fancy_grid')
 
             print(var)
 
