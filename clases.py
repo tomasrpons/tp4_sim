@@ -32,7 +32,7 @@ class Costos(object):
 
 
 class Resolucion(object):
-    def __init__(self, dia,rnd_demanda,demanda,pedido,rnd_demora,demora,stock,decenas_pedidas,costo_orden,costo_almacenamiento,costo_ruptura,costo_total,acumulador_costo, promedio_costo):
+    def __init__(self, dia,rnd_demanda,demanda,pedido,rnd_demora,demora,stock,decenas_pedidas,costo_orden,costo_almacenamiento,costo_ruptura,costo_total,acumulador_costo, promedio_costo, acumulador_demanda):
         self.dia = dia
         self.rnd_demanda = rnd_demanda
         self.demanda= demanda
@@ -47,6 +47,7 @@ class Resolucion(object):
         self.costo_total = costo_total
         self.acumulador_costo = acumulador_costo
         self.promedio_costo = promedio_costo
+        self.acumulador_demanda = acumulador_demanda
 
     def __list__(self):
         return [self.dia, self.rnd_demanda, self.demanda, self.pedido, self.rnd_demora, self.demora, self.stock,self.decenas_pedidas, self.costo_orden, self.costo_almacenamiento, self.costo_ruptura, self.costo_total, self.acumulador_costo, self.promedio_costo]
