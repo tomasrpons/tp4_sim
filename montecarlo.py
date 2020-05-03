@@ -7,7 +7,7 @@ def tabla_montecarlo_A(tabla_demanda, tabla_demora, tabla_pedido, dias, dia_lleg
     stock_anterior = 20
     resoluciones = []
     pendiente_entrada = False
-    decenas_pedidas=180
+
     costo_orden=0
     demora=-1;
     rnd_demora=0
@@ -21,7 +21,7 @@ def tabla_montecarlo_A(tabla_demanda, tabla_demora, tabla_pedido, dias, dia_lleg
         costo_orden = 0
         hay_ruptura = False  # Banderapara el costo de ruptura. Empieza en false
         if dia_llegada == i:
-            decenas_pedidas = 180
+            decenas_pedidas = cant
             dia_llegada += intervalo_pedido        #Defino el proximo día que llegan los pedidos
             rnd_demora = random.uniform(0,1)
             pendiente_entrada = True
@@ -37,10 +37,10 @@ def tabla_montecarlo_A(tabla_demanda, tabla_demora, tabla_pedido, dias, dia_lleg
 
 
         rnd_demanda = random.uniform(0,1)
-        indice = get_indice(tabla_demanda.acumulador,rnd_demanda)
+        indice = get_indice(tabla_demanda.acumulador, rnd_demanda)
         demanda = tabla_demanda.intervalos[indice]      #Valor dela demanda
         if demanda <= stock_anterior:           #Defino el nuevo stock
-            stock_anterior -= demanda
+            stock_anterior = stock_anterior - demanda
         else:
             ruptura = demanda - stock_anterior
             stock_anterior = 0
@@ -49,6 +49,7 @@ def tabla_montecarlo_A(tabla_demanda, tabla_demora, tabla_pedido, dias, dia_lleg
         costo_mantenimiento =  stock_anterior * 3
         if hay_ruptura:
             costo_ruptura = ruptura * 4
+            hay_ruptura = False
         else:
             costo_ruptura = 0
 
@@ -57,7 +58,7 @@ def tabla_montecarlo_A(tabla_demanda, tabla_demora, tabla_pedido, dias, dia_lleg
         if i==0:
             costo_acumulado=costo_total
         else:
-            costo_acumulado=costo_total+resoluciones[i-1].acumulador_costo
+            costo_acumulado= costo_total  +resoluciones[i-1].acumulador_costo
 
         promedio=costo_acumulado/(i+1)
 

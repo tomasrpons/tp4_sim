@@ -51,7 +51,7 @@ def main():
                 promedio_costo.append(resoluciones[i].promedio_costo)
 
             res={'DIAS':dias,'RND DEMANDA': rnd_demanda,'DEMANDA':demanda,'PEDIDO':pedido,'RND DEMORA':rnd_demora, 'DEMORA':demoras,'STOCK':stock,'DECENAS PEDIDAS':decenas_pedidas,
-            'COSTO ORDEN': costo_orden, 'COSTO ALMACEN.': costo_almacen, 'COSTO RUPTURA': costo_ruptura, 'COSTO ACUM':costo_acumulado,'COSTO TOTAL':costo_total,'PROMEDIO':promedio_costo}
+            'COSTO ORDEN': costo_orden, 'COSTO ALMACEN.': costo_almacen, 'COSTO RUPTURA': costo_ruptura, 'COSTO TOTAL':costo_total, 'COSTO ACUM':costo_acumulado,'PROMEDIO':promedio_costo}
             
             var= tabulate.tabulate(res, headers=['DIA','RND DEMANDA', 'DEMANDA', 'PEDIDO', 'RND DEMORA', 'DEMORA', 'STOCK', 'DECENAS PEDIDAS', 'COSTO ORDEN', 'COSTO ALMACEN.', 'COSTO RUPTURA','COSTO TOTAL' ,'COSTO ACUM.','PROMEDIO COSTO'], tablefmt='fancy_grid')
 
